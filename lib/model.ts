@@ -64,7 +64,7 @@ export const MODEL: ModelConstants = {
 };
 
 /** The model's version label: the dashboard names it and the rules quote it. */
-export const MODEL_VERSION = 'radar-1';
+export const MODEL_VERSION = 'radar-2.0';
 
 /** How many pre-token protocols below the watchlist floor the early radar carries, by TVL. */
 export const EARLY_ROWS = 160;
@@ -319,34 +319,34 @@ export function farmSteps(p: SnapshotProtocol, age: number | null): FarmStep[] {
   const action = actionFor(p, capital, chain);
   return [
     {
-      text: `Use a fresh wallet that holds only the funds you plan to farm, and keep its seed phrase offline.`,
-      cost: 'under $3 of gas for the first transaction',
+      text: `Use a dedicated, clean farming wallet holding only target capital, with no prior token approvals or smart contract permissions.`,
+      cost: 'under $3 of network fee for setup',
       time: '5 minutes',
     },
     {
       text: action,
-      cost: `$${capital} of capital and about $${capital >= 150 ? 8 : 4} of gas`,
-      time: '15 minutes to set up',
+      cost: `$${capital} of capital and about $${capital >= 150 ? 8 : 4} in network fees`,
+      time: '15 minutes initial allocation',
     },
     {
-      text: `Make one qualifying action each week, such as a deposit, a borrow, a swap or a vote.`,
-      cost: 'about $2 of gas a week',
-      time: '10 minutes a week',
+      text: `Maintain regular on-chain interaction weekly, such as compounding yields, rebalancing debt ratios, or participating in DAO governance votes.`,
+      cost: 'about $2 of network fees a week',
+      time: '10 minutes weekly',
     },
     {
-      text: `Hold the position for at least ${hold} days so the activity is counted in more than one snapshot.`,
-      cost: `the $${capital} stays in the position`,
-      time: `${hold} days`,
+      text: `Hold the position continuously for at least ${hold} days to ensure activity spans multiple qualifying snapshot blocks.`,
+      cost: `the $${capital} allocation stays deposited`,
+      time: `${hold} days retention window`,
     },
     {
-      text: `Before you withdraw, open the protocol's own points or rewards page and claim only from the link it publishes.`,
-      cost: 'no fee to check, and never pay to claim',
-      time: '10 minutes',
+      text: `Monitor official project communication channels for distribution announcements; verify claim contracts exclusively on-chain to avoid phishing.`,
+      cost: 'no check fee; never approve untrusted claim links',
+      time: '10 minutes review',
     },
     {
-      text: `Write the wallet, the dates and every transaction in a farm log so you can repeat the position or unwind it.`,
-      cost: 'nothing but the log',
-      time: '5 minutes',
+      text: `Record transaction hashes, deposit dates, and protocol endpoints in an offline log to track qualifying volume and unwind capital smoothly.`,
+      cost: 'zero cost',
+      time: '5 minutes record keeping',
     },
   ];
 }
